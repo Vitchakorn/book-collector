@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #353535;
+}
+
+body {
+  margin: 0;
+}
+
+.book-container {
+  text-align: left;
+  padding: 5px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.book-item {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2em 1em;
+  padding: 1em;
+  justify-content: center;
+}
+
+.book{
+  position: relative;
+  width:100%;
+  background-color: floralwhite;
+  color: #202020;
+  font-size: 2em;
+  text-align: center;
+  height: 250px;
+} */
