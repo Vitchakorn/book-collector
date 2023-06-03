@@ -45,7 +45,7 @@ const registerUser = asyncHandler(async (req,res) => {
 const loginUser = asyncHandler(async (req,res) => {
     const {email, password} = req.body;
     if(!email || !password) {
-        resstatus(400);
+        restatus(400);
         throw new Error("All fields are mandatiry!");
     }
     const user = await User.findOne({ email });
@@ -62,19 +62,19 @@ const loginUser = asyncHandler(async (req,res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "1h" }
         );
-        res.status(200).json({accessToken});
+        return res.json({accessToken});
     }else {
         res.status(401);
         throw new Error("email or password is invalid");
     }
-    res.json({message: "Login user"});
+
 });
 
 //@desc Current user info
 //@route Post /api/users/current
 //@access private
 const currentUser = asyncHandler(async (req,res) => {
-    res.json(req.user);
+    res.json(req.user.id);
 });
 
 module.exports = {registerUser, loginUser, currentUser};
