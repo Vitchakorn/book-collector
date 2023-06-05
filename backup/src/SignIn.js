@@ -252,19 +252,18 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { loginUrl } from './components/api/api';
 
 const defaultTheme = createTheme();
 
 async function loginUser(credentials) {
-  return fetch('http://localhost:5001/api/users/login', {
+  return fetch(loginUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
+  }).then(data => data.json())
  }
 
 export default function SignIn() {
@@ -280,121 +279,78 @@ export default function SignIn() {
     if ('accessToken' in response) {
       
       localStorage.setItem('accessToken', response['accessToken']);
+      console.log(JSON.stringify(response['user']))
       localStorage.setItem('user', JSON.stringify(response['user']));
       window.location.href = "/home";
       }
   }
 
 
-// const SignIn = () => {
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const MySwal = withReactContent(Swal);
-//   // let navigate = useNavigate();
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await axios.post('http://localhost:5001/api/users/login', {
-//         email,
-//         password
-//       })
-//       .then(response => {console.log(response)})
-//       if (response.data.accessToken) {
-//         localStorage.setItem('accessToken', response.data.accessToken)
-//         window.location.href = "/home";
-//       }
-
-
-//       // .then(response => {
-//       //   console.log(response)
-//       //   if (response.status === 'ok') {
-//       //     MySwal.fire({
-//       //       html: <i>{response.message}</i>,
-//       //       icon: 'success'
-//       //     }).then((value) => {
-//       //       navigate('/home')
-//       //     })
-//       //   } else {
-//       //     MySwal.fire({
-//       //       html: <i>{response.message}</i>,
-//       //       icon: 'error'
-//       //     })
-//       //   }
-//       // });
-
-//       // const accessToken = response.data.accessToken;
-//       // // Do something with the access token, such as storing it in local storage or a global state management system
-
-//       console.log('Login successful');
-//     } catch (error) {
-//       console.error('Login failed:', error);
-//     }
-//   };
-
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              value={email}
-              autoFocus
-              onChange={e => setEmail(e.target.value)}
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+    <div className="signin-container">
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                autoFocus
+                onChange={e => setEmail(e.target.value)}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </Box>
-        </Box>
 
-      </Container>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
+    </div>
   );
 }
 

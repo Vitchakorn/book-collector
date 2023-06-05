@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Button } from './Button.js';
 import { Link, NavLink } from 'react-router-dom'
-import './Navbar.css'
+import './style/Navbar.css'
 
 
 
@@ -43,7 +43,7 @@ function Navbar() {
           </div>
           
           <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+            <i className={click ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'} />
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
@@ -67,8 +67,18 @@ function Navbar() {
                 Profile
               </Link>
             </li>
+            
+              <Link
+                to='/sign-up'
+                className='nav-links-mobile'
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            
+
           </ul>
-          <Button buttonStyle='btn--outline' onClick={handleLogout}>Logout</Button>
+          {button && <Button buttonStyle='btn--outline' onClick={handleLogout}>Logout</Button>}
         </div>
       </nav>
     </>

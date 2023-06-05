@@ -1,6 +1,6 @@
 import React from 'react'
 import Category from '../Category'
-import './Bookpage.css'
+import '../style/Bookpage.css'
 
 
 

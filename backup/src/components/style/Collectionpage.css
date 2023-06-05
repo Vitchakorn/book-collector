@@ -1,0 +1,39 @@
+.collection-container {
+    padding-left: 10%;
+    padding-right: 10%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+}
+
+.collection-container {
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+.collection-item {
+    width: 60%;
+    height: 150px;
+    background-image: linear-gradient() ;
+    border: black solid 1px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 30px;
+}
+
+.collection-add {
+    width: 30%;
+    height: 100px;
+    background-image: linear-gradient() ;
+    border: black solid 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 30px;
+}
+
