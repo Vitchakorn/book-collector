@@ -50,8 +50,8 @@ app.post('/api/books', upload.single('image'), (req, res) => {
         res.status(500).json({ error: 'Failed to create collection' });
       });
   });
-
-
+  
+  
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

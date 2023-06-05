@@ -5,7 +5,7 @@ const Book = require("../models/bookModel");
 
 //@desc Get all book
 //@route GET /api/books
-//@access private
+//@access public
 const getBooks = asyncHandler(async (req, res) =>{
     const books = await Book.find();
     res.status(400).json(books);
@@ -30,9 +30,12 @@ const getImg = asyncHandler(async (req, res) => {
   });
 
 
+  
+
+
 //@desc Create new contacts
 //@route Post /api/{users}/collection
-//@access private
+//@access public
 
 
 // // JSON
@@ -91,7 +94,7 @@ const getImg = asyncHandler(async (req, res) => {
 
 //@desc Get contacts
 //@route Get /api/{users}/collection
-//@access private
+//@access public
 const getBook = asyncHandler(async (req, res) =>{
     const book = await Book.findById(req.params.id);
 
@@ -105,7 +108,7 @@ const getBook = asyncHandler(async (req, res) =>{
 
 //@desc Delete new contacts
 //@route Delete /api/{users}/collection/:collection_id
-//@access private
+//@access public
 const deleteBook = asyncHandler(async (req, res) =>{
     const book = await Book.findById(req.params.id);
     if(!book) {
@@ -115,6 +118,8 @@ const deleteBook = asyncHandler(async (req, res) =>{
     await Book.findByIdAndRemove(req.params.id);
     res.status(200).json(book);
 });
+
+
 
 
 module.exports = {getBooks, getImg, getBook, deleteBook};

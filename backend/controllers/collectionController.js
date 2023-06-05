@@ -63,14 +63,6 @@ const updateNameCollection = asyncHandler(async (req, res) =>{
         req.params.id,
         req.body,
         { new: true } 
-        // (err) => {
-        //     if(!err){
-        //         console.log("Manageed to update")
-        //         res.json({message: "User updated successfully"})
-        //     } else [
-        //         res.json({message: `Someting went wrong please try again => ${err}`})
-        //     ]
-        // } 
     );
     res.status(200).json(updateCollection);
 });
@@ -90,13 +82,18 @@ const addBook = asyncHandler(async (req, res) =>{
         throw new Error("User no permission")
     }
 
+    const collectionBook = collection.books
+    collectionBook.push(req.body.id)
     const updateBook = await Collection.findByIdAndUpdate(
         req.params.id,
-        { $push: {books : req.body.id} },
+        {books : collectionBook},
         { new: true } 
     );
     res.status(200).json(updateBook);
 });
+
+
+
 
 
 //@desc Delete new Collections
