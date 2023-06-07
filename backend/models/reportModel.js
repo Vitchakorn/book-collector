@@ -3,16 +3,15 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
     typeOfReport: {
         type: String,
-        require: [true, "Please add the username"]
+        require: [true, ""]
     },
     subject: {
         type: String,
-        require: [true, "Please add the email address"],
-        unique: [true, "Email address is already taken"]
+        require: [true, ""],
     },
     details: {
         type: String,
-        require: [true, "Please add password"]
+        require: [true, ""]
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -24,4 +23,4 @@ const userSchema = mongoose.Schema({
 }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("report", userSchema);

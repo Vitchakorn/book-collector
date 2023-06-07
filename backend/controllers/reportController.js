@@ -18,11 +18,13 @@ const createReport = asyncHandler(async (req, res) =>{
         res.status(400);
         throw new Error("please send Subject");
     }
-    const collection = await Report.create({
-        name,
+    const report = await Report.create({
+        typeOfReport, 
+        subject, 
+        details,
         user_id: req.user.id
     });
-    res.status(201).json(collection);
+    res.status(201).json(report);
 });
 
-export default {getReports, createReport}
+module.exports = {getReports, createReport};

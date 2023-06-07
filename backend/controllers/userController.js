@@ -42,7 +42,7 @@ const loginUser = asyncHandler(async (req,res) => {
         throw new Error("All fields are mandatiry!");
     }
     const user = await User.findOne({ email });
-    const admin = user.username;
+    const admin = user.isAdmin;
 
     //compare password with hashedpassword
     if(user && (await bcrypt.compare(password, user.password))){

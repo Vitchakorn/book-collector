@@ -13,10 +13,18 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         require: [true, "Please add password"]
+    },
+    bio: {
+        type: String,
+        default: "Welcome to Collect site"
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 },{
     timestamps: true,
 }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Users", userSchema);
