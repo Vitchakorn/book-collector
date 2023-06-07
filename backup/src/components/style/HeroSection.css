@@ -6,6 +6,10 @@ img {
     z-index: -1;
 }
 
+#bg-img {
+    filter: blur(5px);
+}
+
 .hero-container {
     /* background: url('../../book-background.jpg') center center/cover no-repeat; */
     color: beige;

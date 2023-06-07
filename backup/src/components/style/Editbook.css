@@ -1,36 +1,11 @@
-
-.category-menu {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-gap: 10px;
-  list-style: none;
-  text-align: center;
-  width: 100%;
-  margin-right: 1rem;
-}
-
-.cate-links {
-  color: #000000;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  height: 100%;
-  font-size: 17px;
-}
-  
-.category-item {
-  height: 60px;
-}
-
-.category-text {
+.edit-book-text {
   margin-top: 2em;
   margin-bottom: 5rem;
   padding-left: 2%;
   transition: all 0.5s ease;
 }
 
-.books-container {
+.edit-books-container {
   display: grid;
   grid-template-columns: repeat(6, 15% );
   grid-gap: 20px;

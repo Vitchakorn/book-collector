@@ -1,5 +1,5 @@
 
-.navbar {
+.admin-navbar {
   background-image: linear-gradient( #9b9b9b, #cac9c9 );
   height: 80px;
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 
-.navbar-container {
+.admin-navbar-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@
   text-align: center;
 }
 
-.navbar-logo {
+.admin-navbar-logo {
   color: #000000;
   cursor: pointer;
   text-decoration: none;
@@ -50,7 +50,7 @@
   display: inline;
 }
 
-.navbar-logo i {
+.admin-navbar-logo i {
   margin-left: 10px; 
 }
 
@@ -60,9 +60,9 @@
   font-size: 1.8rem;
 }
 
-.nav-menu {
+.admin-nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -70,11 +70,11 @@
   margin-right: 1rem;
 }
 
-.nav-item {
+.admin-nav-item {
   height: 80px;
 }
 
-.nav-links {
+.admin-nav-links {
   color: #000000;
   display: flex;
   align-items: center;
@@ -84,7 +84,7 @@
   font-size: 22px;
 }
 
-.nav-links:hover {
+.admin-nav-links:hover {
   border-bottom: 4px solid #fff;
   transition: all 0.2s ease-out;
 }
@@ -93,7 +93,7 @@
   color: #303030;
 }
 
-.nav-links-mobile {
+.admin-nav-links-mobile {
   display: none;
 }
 
@@ -112,7 +112,7 @@
     position: relative;
   }
 
-  .nav-menu {
+  .admin-nav-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -124,7 +124,7 @@
     transition: all 0.5s ease;
   }
 
-  .nav-menu.active {
+  .admin-nav-menu.active {
     background: #242222;
     left: 0;
     opacity: 1;
@@ -132,7 +132,7 @@
     z-index: 1;
   }
 
-  .nav-links {
+  .admin-nav-links {
     color: #fff;
     text-align: center;
     padding: 2rem;
@@ -140,7 +140,7 @@
     display: table;
   }
 
-  .nav-links:hover {
+  .admin-nav-links:hover {
     background-color: #fff;
     color: #242424;
     border-radius: 0;
@@ -150,13 +150,13 @@
     position: relative;
   }
 
-  .navbar-logo {
+  .admin-navbar-logo {
     position: relative;
     text-align: center;
     top: 30%;
   }
 
-  .menu-icon {
+  .admin-menu-icon {
     display: block;
     position: absolute;
     top: 0;
@@ -171,7 +171,7 @@
     font-size: 2rem;
   }
 
-  .nav-links-mobile {
+  .admin-nav-links-mobile {
     display: block;
     text-align: center;
     margin: 2rem auto;
@@ -186,7 +186,7 @@
     transition: all 0.3s ease-out;
   }
 
-  .nav-links-mobile:hover {
+  .admin-nav-links-mobile:hover {
     background: #fff;
     color: #242424;
     transition: 250ms;

@@ -76,12 +76,133 @@
 
 import React, { useState, useEffect } from 'react';
 import { bookUrl } from './api/api';
+import BookDetails from './BookDetail';
+import './style/Category.css'
+import CollectionBooks from './CollectionBooks';
+
 
 function CollectionDetails({collectionList}) {
+  const [bookList, setBookList] = useState([]);
+  const [showBooks, setShowBooks] = useState(false);
+  const [editName, setEditName] = useState(false);
+  const [newName, setNewName] = useState();
+  const collectionBooks = collectionList.books
+  const token = localStorage.getItem('accessToken');
+
+  useEffect(() => {
+    console.log(collectionList)
+    const fetchBooks = async () => {
+        try {
+            const response = await fetch(bookUrl); // Replace with your backend API endpoint to retrieve book details
+            const bookListData = await response.json();
+            // const updatedBookList = bookListData.data.map((bookList, index) => ({
+            //     ...bookList,
+            //     id: index + 1
+            //     }));
+            setBookList(bookListData);
+        } catch (err) {
+          console.log('Error fetching book details:', err);
+        }
+      };
+  
+    fetchBooks();
+
+
+  }, []);
+
+  const handleDelete = async e => {
+    e.preventDefault();
+    try {
+    const response = await fetch('http://localhost:5001/api/collections/' + collectionList._id, {
+      method: 'DELETE',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${token}`
+      },
+      // body: JSON.stringify({ name : collectionName }),
+    });
+    window.location.reload();
+  } catch (error) {
+    console.log('Error adding book:', error);
+  }
+  }
+
+  const handleUpdate = async e => {
+    e.preventDefault();
+    try {
+    const response = await fetch('http://localhost:5001/api/collections/' + collectionList._id, {
+      method: 'PUT',
+      headers: {
+      'Content-Type': 'application/json',
+      'Authorization' : `Bearer ${token}`
+      },
+      body: JSON.stringify({ name : newName }),
+    });
+    window.location.reload();
+  } catch (error) {
+    console.log('Error adding book:', error);
+  }
+  }
+
+  const handleButtonClick = () => {
+    setShowBooks(!showBooks);
+  };
+
+  const handleEditClick = async(e) => {
+    setEditName(!editName);
+  }
+
   return (
-        <div>
-          <h2>{collectionList.name}</h2>
+      <div className="collection-con">
+        <div className="collection-item">
+          {editName ? (
+            <form onSubmit={handleUpdate} className="form-inline collection-name-edit">
+              <input 
+                type="text" 
+                id="new-name" 
+                value={newName} 
+                onChange={e => setNewName(e.target.value)}
+              />
+              <button
+                type="submit"
+                variant="contained"
+              >
+                send
+              </button>
+            </form>
+            ):(
+            <div className="collection-name" onClick={handleButtonClick}>
+              <h2>{collectionList.name}</h2>
+            </div>
+            )}
+          <h2 className="collection-edit" onClick={handleEditClick}>Edit</h2>
+          <h2 className="collection-delete" onClick={handleDelete}>delete</h2>
+          
+      
+
+          {showBooks &&
+          
+          <div className="collect-books-container" >
+            <div className="collect-books-name">
+              <h2>{collectionList.name}</h2>
+            </div>
+            <div className="collect-books-list">
+              <div className="close-books-container" onClick={handleButtonClick}>
+                <h2>{`<`}</h2>
+              </div>
+              {collectionBooks.map(bookList => (
+                  <div className="collect-book-item" key={bookList}>
+                    <CollectionBooks bookList={bookList} />
+                  </div>
+              ))}
+            </div>
+          </div>}
+
+            
+
         </div>
+      </div>
+        
 
   );
 };

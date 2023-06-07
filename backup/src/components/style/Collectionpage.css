@@ -17,16 +17,15 @@
     background-image: linear-gradient() ;
     border: black solid 1px;
     border-radius: 25px;
-    cursor: pointer;
     margin: auto;
     text-align: center;
     margin-top: 15px;
-    padding-top: 30px;
+    padding-top: 45px;
 }
 
 .collection-add {
     width: 30%;
-    height: 100px;
+    height: 130px;
     background-image: linear-gradient() ;
     border: black solid 1px;
     border-radius: 50px;
@@ -34,6 +33,174 @@
     margin: auto;
     text-align: center;
     margin-top: 15px;
-    padding-top: 30px;
 }
 
+.add-icon {
+    margin-top: 50px;
+    font-size: larger;
+}
+
+
+.form-inline {
+    display: flex;
+
+  }
+  
+  .form-inline input[type="text"],
+  .form-inline button {
+    height: 30px;
+  }
+  
+  .form-inline input[type="text"] {
+    margin-right: 5px;
+  }
+  
+  .form-inline button {
+    display: inline-block;
+    padding: 0 10px;
+  }
+  
+
+.collection-name {
+    text-align: center;
+    transform: translateY(50%);
+    cursor: pointer;
+}
+
+.collection-delete {
+    
+    transform: translateY(50%);
+    cursor: pointer;
+    color: red;
+    font-size: 15px;
+}
+
+.collection-edit {
+    margin-top: 20px;
+    transform: translateY(50%);
+    text-align: right;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+.collect-books-container {
+    position: absolute;
+    padding: 3rem;
+    background-color: rgb(156, 156, 156);
+    left: 15%;
+    width: 70%;
+    height: auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 1rem;
+}
+
+.collect-books-name {
+    margin-bottom: 2rem;
+}
+
+.collect-books-list {
+    display: grid;
+    grid-template-columns: repeat(5, 18%);
+    grid-gap: 20px;
+    /* padding: 5rem; */
+    height: auto;
+}
+
+.close-books-container {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    z-index: 1;
+    color: black;
+    cursor: pointer;
+    transform: translateY(30%);
+    font-size: 3rem;
+}
+
+.collect-book-item {
+    height: auto;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.collect-book-item {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: azure;
+    border-radius: 10px;
+    height: auto;
+    max-width: 300px;
+    z-index: 99;
+  }
+  
+  
+  
+  .collect-book-img {
+    background-image: radial-gradient(ellipse at center, rgb(179, 179, 179) 0%,rgb(124, 124, 124)30%,rgb(71, 71, 71) 100%);
+    width: 100%;
+    height: 230px;
+    text-align: left;
+  }
+  
+  .collect-Book-img {
+    position: relative;
+    object-fit: contain;
+    height: 230px;
+    z-index: 1;
+  }
+  
+  .collect-book-name {
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 50px;
+    white-space: pre-wrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap ;
+  }
+  
+  .collect-book-author {
+    padding-left: 10px;
+    font-size: 15px;
+    height: 40px;
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap ;
+    color: #6e6e6e;
+  }
+
+@media screen and (max-width: 960px) {
+    .collection-add {
+        width: 60%;
+        height: 130px;
+        background-image: linear-gradient() ;
+        border: black solid 1px;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: auto;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    
+    .collect-books-container {
+        position: absolute;
+        padding: 2rem;
+        background-color: rgb(156, 156, 156);
+        left: 15%;
+        width: 70%;
+        height: auto;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        border-radius: 1rem;
+    }
+
+    .collect-books-list {
+        display: grid;
+        grid-template-columns: repeat(2, 45%);
+        grid-gap: 20px;
+        /* padding: 5rem; */
+        height: auto;
+    }
+}

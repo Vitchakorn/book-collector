@@ -78,10 +78,11 @@ import React, { useState, useEffect } from 'react';
 import { bookUrl } from './api/api';
 import authConfig from './api/authConfig';
 import CollectionDetails from './CollectionDetail';
-import './style/BookDetail.css'
+import AddCollection from './AddBook';
 
-function BookDetails({ bookList}) {
+function BookDetails({bookList}) {
   const [imageUrl, setImageUrl] = useState(null);
+  const [showCollection, setShowCollection] = useState(false);
   const [addCollectList, setCollectionList] = useState([]);
 
   useEffect(() => {
@@ -93,23 +94,31 @@ function BookDetails({ bookList}) {
         setImageUrl(url);
       } catch (error) {
         console.error(error);
-      }
+      }};
+
+      fetchImage();
+    }, [bookList]);
+    
+    const handleButtonClick = () => {
+      setShowCollection(!showCollection);
     };
+    
+  // const handleAddBook = async () => {
+  //   try {
+  //     const response = await fetch('http://localhost:5001/api/collections/647afa3ee705d20ff970a771/book', {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization' : `Bearer ${token}`
+  //       },
+  //       body: JSON.stringify({ id: bookList._id })
+  //     });
+  //     console.log(response)
+  //   } catch (error) {
+  //     console.log('Error adding book:', error);
+  //   }
+  // };
 
-    fetchImage();
-  }, [bookList]);
-
-
-
-    // const handleCollectClick = async () => {
-    //     try {
-    //         const response = await fetch('http://localhost:5001/api/collections/', authConfig); // Replace with your backend API endpoint to retrieve book details
-    //         const collectionListData = await response.json();
-    //         setCollectionList(collectionListData);
-    //     } catch (err) {
-    //       console.log('Error fetching collection details:', err);
-    //     }
-    //   };
 
 
   return (
@@ -126,11 +135,11 @@ function BookDetails({ bookList}) {
           <h3>{bookList.author}</h3>
         </div>
         <div className="book-btn">
-          <button> add to collection</button>
-        </div>
-        
-        {/* <button className='addCollect-btn' onClick={handleCollectClick}>Add to collection</button>
-        <div className="collection-show">
+          {/* <button> add to collection</button> */}
+          <button id='addCollect-btn' onClick={handleButtonClick}>Add to collection</button>
+          {showCollection && <AddCollection bookId={bookList._id}/>}
+        </div>        
+        {/* <div className="collection-show">
           {addCollectList.map(collectionList => (
             <div className="collection-item"> 
               <CollectionDetails collectionList={collectionList} />

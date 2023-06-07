@@ -28,19 +28,27 @@ const ProfileDetail = ({user}) => {
       <div className="reporting-container">
         <p>Report</p>
       </div>
-      <div className="repoting-detail">
+      <div className="reporting-details">
         <form action="">
-            Choose request type
+          <div className="form-column">
+            <label htmlFor="request">Choose request type</label>
             <select name="request" id="request">
-                <option value="book">Books missing / incorrect information</option>
-                <option value="issue">Problem issue</option>
-                <option value="webbug">Website reporting</option>
+              <option value="book">Books missing / incorrect information</option>
+              <option value="issue">Problem issue</option>
+              <option value="webbug">Website reporting</option>
             </select>
-            Subject
-            <input type="text" />
-            Description
-            <input type="text" />
-            <input type="submit" value="Submit"></input>
+          </div>
+          <div className="form-column">
+            <label htmlFor="subject">Subject</label>
+            <input type="text" id="subject" />
+          </div>
+          <div className="form-column">
+            <label htmlFor="description">Description</label>
+            <input type="text" id="description" />
+          </div>
+          <div className="form-column">
+            <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     </div>

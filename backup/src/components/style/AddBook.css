@@ -1,0 +1,11 @@
+.add-collection-container {
+    background-color: aliceblue;
+}
+
+.collection {
+    border: black solid 1px;
+    background-color: rgb(255, 254, 244);
+    padding: 5px;
+    cursor: pointer;
+    font-size: 11px;
+}
