@@ -17,12 +17,14 @@ app.use("/api/contacts", require("./routes/contactRoutes"));
 app.use("/api/books", require("./routes/bookRoutes"));
 app.use("/api/collections", require("./routes/collectionRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/reports", require("./routes/reportRoutes"));
 app.use(errorHandler);
 
 
 // Create a storage engine for multer
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+
 
 // Handle the image upload route
 app.post('/api/books', upload.single('image'), (req, res) => {

@@ -1,11 +1,12 @@
 const express = require ("express");
-const {getBooks, getImg, getBook, deleteBook} = require("../controllers/bookController");
+const {getBooks, getImg, postCateBook, getBook, deleteBook} = require("../controllers/bookController");
 const router = express.Router();
 
 
 router.route('/').get(getBooks);
 router.route('/:id').get(getBook).delete(deleteBook);
 router.route('/:id/image').get(getImg);
+router.route('/category').post(postCateBook);
 
   
 // router.get('/:id/image', async (req, res) => {

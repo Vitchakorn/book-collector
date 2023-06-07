@@ -27,14 +27,7 @@ const registerUser = asyncHandler(async (req,res) => {
         username,
         email,
         password: hashedPassword
-    });
-    if(user) {
-        res.status(201).json({_id: user.id, email: user.email})
-    }else{
-        res.status(400);
-        throw new Error("User data is invalid");
-    }
-    console.log(`User ${user} created`);
+    })
 
     res.json({message: "Register the user"});
 });
@@ -49,6 +42,7 @@ const loginUser = asyncHandler(async (req,res) => {
         throw new Error("All fields are mandatiry!");
     }
     const user = await User.findOne({ email });
+    const admin = user.username;
 
     //compare password with hashedpassword
     if(user && (await bcrypt.compare(password, user.password))){
@@ -62,7 +56,7 @@ const loginUser = asyncHandler(async (req,res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "10h" }
         );
-        return res.json({accessToken});
+        return res.json({accessToken, admin});
     }else {
         res.status(401);
         throw new Error("email or password is invalid");

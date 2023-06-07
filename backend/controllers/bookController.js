@@ -29,7 +29,11 @@ const getImg = asyncHandler(async (req, res) => {
       });
   });
 
+const postCateBook = asyncHandler(async (req, res) =>{
+  const books = await Book.find({category: req.body.category});
+  res.status(400).json(books);
 
+});
   
 
 
@@ -122,4 +126,4 @@ const deleteBook = asyncHandler(async (req, res) =>{
 
 
 
-module.exports = {getBooks, getImg, getBook, deleteBook};
+module.exports = {getBooks, getImg, postCateBook, getBook, deleteBook};

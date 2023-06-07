@@ -82,7 +82,14 @@ const addBook = asyncHandler(async (req, res) =>{
         throw new Error("User no permission")
     }
 
+    
+
     const collectionBook = collection.books
+
+    if(collectionBook.indexOf(req.body.id) !== -1) {
+            throw new Error("This book already in Collection")
+        }
+
     collectionBook.push(req.body.id)
     const updateBook = await Collection.findByIdAndUpdate(
         req.params.id,
@@ -92,7 +99,33 @@ const addBook = asyncHandler(async (req, res) =>{
     res.status(200).json(updateBook);
 });
 
+const pullBook = asyncHandler(async (req, res) =>{
+    const collection = await Collection.findById(req.params.id);
+    if(!collection) {
+        res.status(404);
+        throw new Error("Collection not found");
+    }
 
+    if(collection.user_id.toString() !== req.user.id) {
+        res.status(403);
+        throw new Error("User no permission")
+    }
+
+    const collectionBook = collection.books
+    
+    const index = collectionBook.indexOf(req.body.id);
+    if (index > -1) { // only splice array when item is found
+        collectionBook.splice(index, 1); // 2nd parameter means remove one item only
+        }
+
+
+    const updateBook = await Collection.findByIdAndUpdate(
+        req.params.id,
+        {books : collectionBook},
+        { new: true } 
+    );
+    res.status(200).json(updateBook);
+});
 
 
 
@@ -110,4 +143,4 @@ const deleteCollection = asyncHandler(async (req, res) =>{
 });
 
 
-module.exports = {getCollections    , createCollection, getCollection, updateNameCollection, addBook, deleteCollection};
+module.exports = {getCollections, createCollection, getCollection, updateNameCollection, addBook, pullBook, deleteCollection};
